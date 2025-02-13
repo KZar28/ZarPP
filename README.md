@@ -1,7 +1,7 @@
 # ZarPP
 Classic Wow Rogue Pickpocket Counter
 
-Counts te amount of gold/silver/copper pickpocketed throughout a single session. Will add each sessions total and display total amount pickpocketed per character!
+Counts the amount of gold/silver/copper pickpocketed throughout a single session. Will add each sessions total and display total amount pickpocketed per character!
 
 commands: 
 ```
