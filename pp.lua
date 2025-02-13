@@ -119,18 +119,16 @@ local Loot_EventFrame = CreateFrame("Frame")
 Loot_EventFrame:RegisterEvent("LOOT_OPENED")
 Loot_EventFrame:SetScript("OnEvent",
 	function(self, event, argloot)
-		print('looting?')
 		if(time() - PP_Time < 8)
 		then
-			print("This was a normal loot event")
+			DEFAULT_CHAT_FRAME:AddMessage("Looted: " ..lootName)
 			
 		else
-			print("This was a PickPocket")
 			local arg1 = argloot
 			local numItems = GetNumLootItems() -- this catches the loot from slot 1, which is usually coins
 			lootIcon, lootName, lootQuantity, rarity, locked, isQuestItem, questId, isActive = GetLootSlotInfo(1);
 			
-			DEFAULT_CHAT_FRAME:AddMessage("Looted: " ..lootName)
+			DEFAULT_CHAT_FRAME:AddMessage("PickPocketed: " ..lootName)
 			
 			coinFunction(lootName)
 --			PP_loot = false -- after looting, set pp to false to protect against non pp-loot
