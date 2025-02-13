@@ -1,0 +1,9 @@
+## Interface: 11200
+## Title: ZarPP
+## Notes: Keeps track of PickPockets.
+## Author: Kevin Zarzana
+## Description: Helps you keep track of tapped enemies and loot.
+## Version: 1.0
+## SavedVariablesPerCharacter: MoneyPickedAll
+zar.lua
+pp.lua
