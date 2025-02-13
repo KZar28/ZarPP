@@ -42,7 +42,6 @@ local function CreateGoldString(money)
 	elseif msg == 'items' or msg == 'item' then
 		itemToggle()
     else -- for just /pp
-	DEFAULT_CHAT_FRAME:AddMessage("You are In: " ..GetMinimapZoneText())
 	DEFAULT_CHAT_FRAME:AddMessage("Session Total is: " ..CreateGoldString(MoneyPicked))
 	DEFAULT_CHAT_FRAME:AddMessage("Lifetime Total Is: " ..CreateGoldString(MoneyPickedAll))
     end
