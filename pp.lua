@@ -43,7 +43,7 @@ local function CreateGoldString(money)
 		itemToggle()
     else -- for just /pp
 	DEFAULT_CHAT_FRAME:AddMessage("Session Total is: " ..CreateGoldString(MoneyPicked))
-	DEFAULT_CHAT_FRAME:AddMessage("Lifetime Total Is: " ..CreateGoldString(MoneyPickedAll))
+	DEFAULT_CHAT_FRAME:AddMessage("In your lifetime you have stolen " ..CreateGoldString(MoneyPickedAll) .."|cffffffff from the people of Azeroth.")
     end
 end
 SlashCmdList["PICKPOCKETER"] = handler;
@@ -121,19 +121,22 @@ Loot_EventFrame:SetScript("OnEvent",
 	
 		local numItems = GetNumLootItems() -- this catches the loot from slot 1, which is usually coins
 		lootIcon, lootName, lootQuantity, rarity, locked, isQuestItem, questId, isActive = GetLootSlotInfo(1);
-			
+		
+		local targetIsDead = UnitIsDead("target")
+
 		if(time() - PP_Time < 8)
 		then
-			DEFAULT_CHAT_FRAME:AddMessage("Looted: " ..lootName)
-			
-		else
-			local arg1 = argloot
+			--DEFAULT_CHAT_FRAME:AddMessage("Looted: " ..lootName)
 
-			DEFAULT_CHAT_FRAME:AddMessage("PickPocketed: " ..lootName)
+		elseif(not targetIsDead) then
+			local arg1 = argloot
+			
+			--DEFAULT_CHAT_FRAME:AddMessage("PickPocketed: " ..lootName)
 			
 			coinFunction(lootName)
---			PP_loot = false -- after looting, set pp to false to protect against non pp-loot
-			PP_Time = 0
-			--CheckInventory()
+			DEFAULT_CHAT_FRAME:AddMessage("Lifetime Total Is: " ..CreateGoldString(MoneyPickedAll))
+		else
+			--DEFAULT_CHAT_FRAME:AddMessage("This is probably gathering: " ..lootName)
+
 		end
 	end)
