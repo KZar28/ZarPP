@@ -43,7 +43,7 @@ local function CreateGoldString(money)
 		itemToggle()
     else -- for just /pp
 	DEFAULT_CHAT_FRAME:AddMessage("Session Total is: " ..CreateGoldString(MoneyPicked))
-	DEFAULT_CHAT_FRAME:AddMessage("In your lifetime you have stolen " ..CreateGoldString(MoneyPickedAll) .."|cffffffff from the people of Azeroth.")
+	DEFAULT_CHAT_FRAME:AddMessage("In your lifetime, you have stolen " ..CreateGoldString(MoneyPickedAll) .."|cffffffff from the people of Azeroth.")
     end
 end
 SlashCmdList["PICKPOCKETER"] = handler;
@@ -124,7 +124,7 @@ Loot_EventFrame:SetScript("OnEvent",
 		
 		local targetIsDead = UnitIsDead("target")
 
-		if(time() - PP_Time < 8)
+		if(time() - PP_Time < 3)
 		then
 			--DEFAULT_CHAT_FRAME:AddMessage("Looted: " ..lootName)
 
