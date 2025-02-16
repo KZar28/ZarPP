@@ -48,6 +48,11 @@ local function CreateGoldString(money)
 end
 SlashCmdList["PICKPOCKETER"] = handler;
 
+-- WINDOW
+-- (1)
+
+
+
 -- ADDON LOADER EVENTS
 local DataFrame=CreateFrame("Frame","DataFrame",UIParent);--    Our frame
 DataFrame:RegisterEvent("VARIABLES_LOADED")
@@ -123,12 +128,18 @@ Loot_EventFrame:SetScript("OnEvent",
 		lootIcon, lootName, lootQuantity, rarity, locked, isQuestItem, questId, isActive = GetLootSlotInfo(1);
 		
 		local targetIsDead = UnitIsDead("target")
+		local exists = UnitExists("target")
+		local isFriend = UnitIsFriend("player","target")
+
+		--if (IsSpellInRange("PickPocket","target")) then 
+		--	print("can pick")
+		--end
 
 		if(time() - PP_Time < 3)
 		then
 			--DEFAULT_CHAT_FRAME:AddMessage("Looted: " ..lootName)
 
-		elseif(not targetIsDead) then
+		elseif(not targetIsDead and exists and not isFriend) then
 			local arg1 = argloot
 			
 			--DEFAULT_CHAT_FRAME:AddMessage("PickPocketed: " ..lootName)
